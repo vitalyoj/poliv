@@ -8,7 +8,7 @@ import pytz
 
 # Настройки
 BOT_TOKEN = "8141615617:AAEBJ86u9rx0g1peCutLwWkL2gA1nw3QVL4"
-ESP_IP = "http://192.168.1.100"  # Замените на IP вашего ESP
+ESP_IP = "http://192.168.1.100"  # Заменить на IP ESP
 ESP_PORT = "80"  # Порт ESP
 ESP_ENDPOINTS = {
     "moisture": "/moisture",
@@ -18,7 +18,6 @@ ESP_ENDPOINTS = {
     "schedule": "/schedule"
 }
 
-# Настройка логирования
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     level=logging.INFO
@@ -28,8 +27,8 @@ logger = logging.getLogger(__name__)
 class PlantMonitorBot:
     def __init__(self):
         self.base_url = f"{ESP_IP}:{ESP_PORT}"
-        self.authorized_users = set()  # Здесь можно хранить ID авторизованных пользователей
-        self.default_password = "plant123"  # Простой пароль для демонстрации
+        self.authorized_users = set() 
+        self.default_password = "plant123"
 
     async def start(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         """Отправляет приветственное сообщение при команде /start"""
@@ -202,7 +201,7 @@ class PlantMonitorBot:
         interval = context.args[1]
         
         try:
-            # Проверка формата времени
+            # Проверка времени
             hours, minutes = map(int, time_str.split(':'))
             if not (0 <= hours < 24 and 0 <= minutes < 60):
                 raise ValueError
